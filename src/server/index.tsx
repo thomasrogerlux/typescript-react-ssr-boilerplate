@@ -15,7 +15,7 @@ expressApp.get("**", (req, res) => {
         <!doctype html>
         <html>
             <head>
-                <title>Ernest</title>
+                <title>TypeScript ReactJS SSR App</title>
             </head>
             <body>
                 <div id="root">${html}</div>
