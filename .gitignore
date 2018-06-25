@@ -1,0 +1,12 @@
+# Build
+build
+
+# Dependencies
+node_modules
+
+# Editor files
+.idea
+.vscode
+
+# Miscellaneous
+.DS_Store

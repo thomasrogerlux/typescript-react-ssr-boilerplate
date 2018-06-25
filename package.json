@@ -1,0 +1,25 @@
+{
+    "name": "typescript-react-ssr-boilerplate",
+    "version": "0.1.0",
+    "license": "MIT",
+    "author": "thomasrogerlux@outlook.fr",
+    "scripts": {
+        "build": "webpack --config webpack.config.js",
+        "start": "node build/index.js"
+    },
+    "dependencies": {
+        "express": "^4.16.3",
+        "react": "^16.4.1",
+        "react-dom": "^16.4.1"
+    },
+    "devDependencies": {
+        "@types/express": "^4.16.0",
+        "@types/react": "^16.4.1",
+        "@types/react-dom": "^16.0.6",
+        "ts-loader": "^4.4.1",
+        "typescript": "^2.9.2",
+        "webpack": "^4.12.1",
+        "webpack-cli": "^3.0.8",
+        "webpack-node-externals": "^1.7.2"
+    }
+}

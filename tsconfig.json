@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "es6",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "jsx": "react",
+        "baseUrl": ".",
+        "paths": {
+            "common": ["./src/common"],
+            "client": ["./src/client"],
+            "server": ["./src/server"],
+        }
+    }
+}
