@@ -3,6 +3,7 @@ build
 
 # Dependencies
 node_modules
+yarn.lock
 
 # Editor files
 .idea
