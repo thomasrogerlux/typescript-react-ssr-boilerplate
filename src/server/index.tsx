@@ -8,7 +8,7 @@ const port = 8080;
 
 expressApp.use('/build', Express.static("build"));
 
-expressApp.get("**", (req, res) => {
+expressApp.get("**", (req, res, next) => {
     const html = ReactDOM.renderToString(<App />);
 
     res.send(`
@@ -25,6 +25,8 @@ expressApp.get("**", (req, res) => {
     `);
 
     res.end();
+
+    next();
 });
 
 expressApp.listen(port);
