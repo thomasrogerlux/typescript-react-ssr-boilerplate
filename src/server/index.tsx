@@ -1,7 +1,10 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/server";
 import * as Express from "express";
+import * as Redux from "redux";
+import * as ReactRedux from "react-redux";
 import App from "common/App";
+import { changeTitle } from "common/redux/reducer/title";
 
 const expressApp = Express();
 const port = 8080;
@@ -9,7 +12,14 @@ const port = 8080;
 expressApp.use('/build', Express.static("build"));
 
 expressApp.get("**", (req, res, next) => {
-    const html = ReactDOM.renderToString(<App />);
+    const store = Redux.createStore(changeTitle);
+    const html = ReactDOM.renderToString(
+        <ReactRedux.Provider store={store}>
+            <App />
+        </ReactRedux.Provider>
+    );
+
+    const preloadedState = store.getState();
 
     res.send(`
         <!doctype html>
@@ -19,6 +29,9 @@ expressApp.get("**", (req, res, next) => {
             </head>
             <body>
                 <div id="root">${html}</div>
+                <script>
+                    window["PRELOADED_STATE"] = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+                </script>
                 <script src="/build/bundle.js"></script>
             </body>
         </html>
