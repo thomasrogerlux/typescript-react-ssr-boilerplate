@@ -1,9 +1,5 @@
 import { Action } from "common/redux/action"
-import { Store } from "common/redux/store"
-
-const initialState: Store = {
-    title: "Hello World!"
-};
+import { Store, initialState } from "common/redux/store"
 
 export function changeTitle(state: Store = initialState, action: Action): Store {
     switch (action.type) {

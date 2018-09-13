@@ -4,7 +4,7 @@ import * as Express from "express";
 import * as Redux from "redux";
 import * as ReactRedux from "react-redux";
 import App from "common/App";
-import { changeTitle } from "common/redux/reducer/title";
+import initReducer from "common/redux/reducer/init";
 
 const expressApp = Express();
 const port = 8080;
@@ -12,7 +12,7 @@ const port = 8080;
 expressApp.use('/build', Express.static("build"));
 
 expressApp.get("**", (req, res, next) => {
-    const store = Redux.createStore(changeTitle);
+    const store = Redux.createStore(initReducer);
     const html = ReactDOM.renderToString(
         <ReactRedux.Provider store={store}>
             <App />
