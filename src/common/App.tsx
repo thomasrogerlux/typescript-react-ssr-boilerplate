@@ -11,23 +11,34 @@ interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
+    titleList: string[] = [
+        "Hello World!",
+        "High five from React",
+        "Wow. Much skills."
+    ];
+
     constructor(props: AppProps) {
         super(props);
-        this.test= this.test.bind(this);
+
+        this.setRandomTitle= this.setRandomTitle.bind(this);
     }
 
-    public test() {
-        const newTitle = this.props.title + "x";
+    public setRandomTitle() {
+        let titleIndex = this.titleList.indexOf(this.props.title) + 1;
+        if (titleIndex >= this.titleList.length) {
+            titleIndex = 0;
+        }
+
+        const newTitle = this.titleList[titleIndex];
         this.props.updateTitle(newTitle);
-        console.log("Hello");
     }
 
     public render() {
         return (
             <div className="App">
                 <Title title={this.props.title} />
-                <button onClick={this.test}>
-                    Change Title
+                <button onClick={this.setRandomTitle}>
+                    Update
                 </button>
             </div>
         );
