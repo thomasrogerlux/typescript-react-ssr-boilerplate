@@ -7,40 +7,46 @@ import * as ReactRedux from "react-redux";
 import App from "common/App";
 import { changeTitle } from "common/redux/reducer/title";
 
-const expressApp = Express();
-const port = 8080;
+function main() {
+    const express = Express();
+    const port = 8080;
 
-expressApp.use('/build', Express.static("build"));
+    express.use(Express.static("build"));
 
-expressApp.get("**", (req, res, next) => {
+    express.get("/", (req, res, next) => {
         const store = Redux.createStore(changeTitle);
-    const html = ReactDOM.renderToString(
-        <ReactRedux.Provider store={store}>
-            <App />
-        </ReactRedux.Provider>
-    );
 
-    const preloadedState = store.getState();
+        const html = ReactDOM.renderToString(
+            <ReactRedux.Provider store={store}>
+                <App />
+            </ReactRedux.Provider>
+        );
 
-    res.send(`
-        <!doctype html>
-        <html>
-            <head>
-                <title>TypeScript ReactJS SSR App</title>
-            </head>
-            <body>
-                <div id="root">${html}</div>
-                <script>
-                    window["PRELOADED_STATE"] = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
-                </script>
-                <script src="/build/bundle.js"></script>
-            </body>
-        </html>
-    `);
+        const preloadedState = JSON
+            .stringify(store.getState())
+            .replace(/</g, "\\u003c");
 
-    res.end();
+        res.send(`
+            <!DOCTYPE html>
+            <html>
+                <head>
+                    <title>TypeScript ReactJS SSR App</title>
+                </head>
+                <body>
+                    <div id="root">${html}</div>
+                    <script>
+                        window["PRELOADED_STATE"] = ${preloadedState}
+                    </script>
+                    <script type="application/javascript" src="bundle.js"></script>
+                </body>
+            </html>
+        `);
 
-    next();
-});
+        res.end();
+        next();
+    });
 
-expressApp.listen(port);
+    express.listen(port);
+}
+
+main();

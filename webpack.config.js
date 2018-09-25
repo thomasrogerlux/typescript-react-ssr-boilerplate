@@ -1,5 +1,5 @@
 const path = require("path");
-const nodeExternals = require('webpack-node-externals');
+const nodeExternals = require("webpack-node-externals");
 
 var config = {
     mode: "development",
@@ -13,12 +13,12 @@ var config = {
         ]
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+        extensions: [".tsx", ".ts", ".js"],
         modules: [
             "src",
             "node_modules"
         ],
-    },
+    }
 };
 
 var client = Object.assign({}, config, {

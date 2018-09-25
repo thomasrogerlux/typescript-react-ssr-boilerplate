@@ -3,7 +3,7 @@ export interface Action {
     data: any
 }
 
-export const ChangeTitle = (newTitle: string): Action => ({
+export const changeTitle = (newTitle: string): Action => ({
     type: "CHANGE_TITLE",
     data: newTitle
 })
