@@ -4,6 +4,7 @@ build
 # Dependencies
 node_modules
 yarn.lock
+package-lock.json
 
 # Editor files
 .idea

@@ -2,8 +2,9 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import { Store } from "common/redux/store"
-import { Title } from "common/component/Title"
 import { changeTitle } from "common/redux/action"
+import { Title } from "common/component/Title"
+import { Button } from "common/component/Button"
 
 interface AppProps {
     title: string;
@@ -36,10 +37,12 @@ class App extends React.Component<AppProps> {
     public render() {
         return (
             <div className="App">
-                <Title title={this.props.title} />
-                <button onClick={this.setRandomTitle}>
+                <Title>
+                    {this.props.title}
+                </Title>
+                <Button onClick={this.setRandomTitle}>
                     Update
-                </button>
+                </Button>
             </div>
         );
     }
