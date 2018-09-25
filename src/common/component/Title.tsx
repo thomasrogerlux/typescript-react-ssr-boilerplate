@@ -1,11 +1,20 @@
 import * as React from "react";
+import styled from "styled-components";
 
 interface TitleProps {
-    title: string;
+    children: string;
 }
 
 export const Title = (props: TitleProps) => {
     return (
-        <h1>{props.title}</h1>
+        <StyledTitle>
+            {props.children}
+        </StyledTitle>
     );
 }
+
+const StyledTitle = styled.h1`
+    color: green;
+    text-align: center;
+    font-family: sans-serif;
+`;
