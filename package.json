@@ -1,11 +1,12 @@
 {
     "name": "typescript-react-ssr-boilerplate",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "license": "MIT",
     "author": "thomasrogerlux@outlook.fr",
     "scripts": {
-        "build": "webpack --config webpack.config.js",
-        "start": "node build/index.js"
+        "build": "webpack",
+        "start": "node build/server.js",
+        "re": "webpack && node build/server.js"
     },
     "dependencies": {
         "express": "^4.16.3",
