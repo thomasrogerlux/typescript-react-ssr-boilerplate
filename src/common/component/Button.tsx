@@ -8,7 +8,7 @@ interface ButtonProps {
 }
 
 interface StyledButtonProps {
-    primary?: boolean;
+    primary: boolean;
 }
 
 export const Button = (props: ButtonProps) => {
