@@ -4,6 +4,7 @@ import * as Express from "express";
 import * as Redux from "redux";
 import * as ReactRedux from "react-redux";
 import { ServerStyleSheet } from "styled-components";
+import { StaticRouter as Router } from "react-router-dom";
 
 import App from "common/App";
 import { changeTitle } from "common/redux/reducer/title";
@@ -16,12 +17,14 @@ function main() {
 
     express.use(Express.static("build"));
 
-    express.get("/", (req, res, next) => {
+    express.get("/*", (req, res, next) => {
 
         const sheet = new ServerStyleSheet()
         const html = ReactDOM.renderToString(sheet.collectStyles(
             <ReactRedux.Provider store={store}>
-                <App />
+                <Router location={req.path} context={{}}>
+                    <App />
+                </Router>
             </ReactRedux.Provider>
         ));
 
@@ -39,7 +42,7 @@ function main() {
                 <body>
                     <div id="root">${html}</div>
                     <script>
-                        window["PRELOADED_STATE"] = ${preloadedState}
+                        window["__PRELOADED_STATE__"] = ${preloadedState}
                     </script>
                     <script type="application/javascript" src="bundle.js"></script>
                     ${styleTags}
