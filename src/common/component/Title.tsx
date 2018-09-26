@@ -2,7 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 
 interface TitleProps {
-    children: string;
+    children?: any;
 }
 
 export const Title = (props: TitleProps) => {

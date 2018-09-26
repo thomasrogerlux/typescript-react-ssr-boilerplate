@@ -2,8 +2,8 @@ import * as React from "react";
 import styled, { css } from "styled-components";
 
 interface ButtonProps {
-    onClick: any;
-    children: string;
+    children?: any;
+    onClick?: any;
     primary?: boolean;
 }
 
