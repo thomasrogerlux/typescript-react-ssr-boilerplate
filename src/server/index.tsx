@@ -9,6 +9,8 @@ import { StaticRouter as Router } from "react-router-dom";
 import App from "common/App";
 import { changeTitle } from "common/redux/reducer/title";
 
+declare const module: any;
+
 function main() {
     const express = Express();
     const port = 8080;
@@ -20,7 +22,7 @@ function main() {
     express.get("/*", (req, res, next) => {
 
         const sheet = new ServerStyleSheet()
-        const html = ReactDOM.renderToString(sheet.collectStyles(
+        const appHTML = ReactDOM.renderToString(sheet.collectStyles(
             <ReactRedux.Provider store={store}>
                 <Router location={req.path} context={{}}>
                     <App />
@@ -33,14 +35,14 @@ function main() {
             .stringify(store.getState())
             .replace(/</g, "\\u003c");
 
-        res.send(`
+        const fullHTML = `
             <!DOCTYPE html>
             <html>
                 <head>
                     <title>TypeScript ReactJS SSR App</title>
                 </head>
                 <body>
-                    <div id="root">${html}</div>
+                    <div id="root">${appHTML}</div>
                     <script>
                         window["__PRELOADED_STATE__"] = ${preloadedState}
                     </script>
@@ -48,13 +50,19 @@ function main() {
                     ${styleTags}
                 </body>
             </html>
-        `);
+        `;
 
+        res.send(fullHTML);
         res.end();
         next();
     });
 
-    express.listen(port);
+    const server = express.listen(port);
+
+    if (module.hot) {
+        module.hot.accept();
+        module.hot.dispose(() => server.close());
+    }
 }
 
 main();

@@ -4,9 +4,9 @@
     "license": "MIT",
     "author": "thomasrogerlux@outlook.fr",
     "scripts": {
+        "dev": "webpack --watch",
         "build": "webpack",
-        "start": "node build/server.js",
-        "re": "webpack && node build/server.js"
+        "start": "node build/server.js"
     },
     "dependencies": {
         "express": "^4.16.3",
