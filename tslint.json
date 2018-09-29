@@ -1,0 +1,15 @@
+{
+    "rules": {
+        "arrow-parens": true,
+        "class-name": true,
+        "eofline": true,
+        "member-access": true,
+        "semicolon": [true, "always"],
+        "switch-default": true,
+        "await-promise": true,
+        "no-unused-variable": true,
+        "arrow-return-shorthand": [true],
+        "import-spacing": true,
+        "newline-before-return": true
+    }
+}
