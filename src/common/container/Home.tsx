@@ -1,11 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
 
-import { Store } from "common/redux/store"
-import { changeTitle } from "common/redux/action"
-import { Title } from "common/component/Title"
-import { Button } from "common/component/Button"
-import { LinkButton } from "common/component/LinkButton"
+import { Store } from "common/redux/store";
+import { changeTitle } from "common/redux/action";
 
 interface HomeProps {
     title: string;
@@ -13,7 +10,7 @@ interface HomeProps {
 }
 
 class Home extends React.Component<HomeProps> {
-    titleList: string[];
+    private titleList: string[];
 
     constructor(props: HomeProps) {
         super(props);
@@ -24,7 +21,7 @@ class Home extends React.Component<HomeProps> {
             "Wow. Much skills."
         ];
 
-        this.setRandomTitle= this.setRandomTitle.bind(this);
+        this.setRandomTitle = this.setRandomTitle.bind(this);
     }
 
     public setRandomTitle() {
@@ -40,15 +37,7 @@ class Home extends React.Component<HomeProps> {
     public render() {
         return (
             <div className="Home">
-                <Title>
-                    {this.props.title}
-                </Title>
-                <Button onClick={this.setRandomTitle}>
-                    Update
-                </Button>
-                <LinkButton to="/test">
-                    Go to test
-                </LinkButton>
+                Home page
             </div>
         );
     }
@@ -57,11 +46,14 @@ class Home extends React.Component<HomeProps> {
 const mapStateToProps = (state: Store) => {
     return {
         title: state.title
-    }
-}
+    };
+};
 
 const mapDispatchToProps = {
     updateTitle: changeTitle
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Home);

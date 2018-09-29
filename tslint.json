@@ -6,7 +6,6 @@
         "member-access": true,
         "semicolon": [true, "always"],
         "switch-default": true,
-        "await-promise": true,
         "no-unused-variable": true,
         "arrow-return-shorthand": [true],
         "import-spacing": true,

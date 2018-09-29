@@ -1,5 +1,5 @@
 export type Store = {
-    title: string
+    title: string;
 };
 
 export const initialState: Store = {

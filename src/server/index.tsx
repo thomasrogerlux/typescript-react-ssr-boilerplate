@@ -20,20 +20,22 @@ function main() {
     express.use(Express.static("build"));
 
     express.get("/*", (req, res, next) => {
-
-        const sheet = new ServerStyleSheet()
-        const appHTML = ReactDOM.renderToString(sheet.collectStyles(
-            <ReactRedux.Provider store={store}>
-                <Router location={req.path} context={{}}>
-                    <App />
-                </Router>
-            </ReactRedux.Provider>
-        ));
+        const sheet = new ServerStyleSheet();
+        const appHTML = ReactDOM.renderToString(
+            sheet.collectStyles(
+                <ReactRedux.Provider store={store}>
+                    <Router location={req.path} context={{}}>
+                        <App />
+                    </Router>
+                </ReactRedux.Provider>
+            )
+        );
 
         const styleTags = sheet.getStyleTags();
-        const preloadedState = JSON
-            .stringify(store.getState())
-            .replace(/</g, "\\u003c");
+        const preloadedState = JSON.stringify(store.getState()).replace(
+            /</g,
+            "\\u003c"
+        );
 
         const fullHTML = `
             <!DOCTYPE html>

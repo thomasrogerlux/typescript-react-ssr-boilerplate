@@ -6,13 +6,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import App from "common/App";
 import { changeTitle } from "common/redux/reducer/title";
+import { Store } from "common/redux/store";
 
-//@ts-ignore
-const preloadedState = window["__PRELOADED_STATE__"];
-//@ts-ignore
-delete window["__PRELOADED_STATE__"]; 
+const preloadedState = (window as any)["__PRELOADED_STATE__"];
+delete (window as any)["__PRELOADED_STATE__"];
 
-const store = Redux.createStore(changeTitle, preloadedState)
+const store = Redux.createStore(changeTitle, preloadedState);
 
 ReactDOM.hydrate(
     <ReactRedux.Provider store={store}>
