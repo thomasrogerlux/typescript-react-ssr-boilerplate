@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { Store } from "common/redux/store";
 import { changeTitle } from "common/redux/action";
+import AppBar from "common/component/AppBar/AppBar.component";
 
 interface HomeProps {
     title: string;
@@ -36,9 +37,9 @@ class Home extends React.Component<HomeProps> {
 
     public render() {
         return (
-            <div className="Home">
-                Home page
-            </div>
+            <React.Fragment>
+                <AppBar />
+            </React.Fragment>
         );
     }
 }
