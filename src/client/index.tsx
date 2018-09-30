@@ -11,7 +11,7 @@ import {
 
 import App from "common/App";
 import theme from "common/theme";
-import { changeTitle } from "common/redux/reducer/title";
+import { changeTitle } from "common/redux/reducers/title";
 
 const preloadedState = (window as any)["__PRELOADED_STATE__"];
 delete (window as any)["__PRELOADED_STATE__"];

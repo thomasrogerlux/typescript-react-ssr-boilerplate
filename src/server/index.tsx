@@ -13,7 +13,7 @@ import {
 
 import App from "common/App";
 import theme from "common/theme";
-import { changeTitle } from "common/redux/reducer/title";
+import { changeTitle } from "common/redux/reducers/title";
 
 declare const module: any;
 

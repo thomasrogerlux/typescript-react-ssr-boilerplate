@@ -2,12 +2,12 @@ import * as React from "react";
 import {
     AppBar as BaseAppBar,
     Typography,
-    Button,
     Grid,
     Toolbar,
     withStyles
 } from "@material-ui/core";
 
+import NavLinkButton from "common/components/NavLinkButton/NavLinkButton.component";
 import style from "./AppBar.style";
 
 interface AppBarProps {
@@ -24,7 +24,7 @@ class AppBar extends React.Component<AppBarProps> {
 
         return (
             <React.Fragment>
-                <BaseAppBar>
+                <BaseAppBar position="static">
                     <Toolbar>
                         <Grid container className={classes.gridContainer}>
                             <Grid
@@ -32,13 +32,14 @@ class AppBar extends React.Component<AppBarProps> {
                                 xs
                                 className={classes.menuButtonContainer}
                             >
-                                <Button
+                                <NavLinkButton
+                                    className={classes.menuButton}
                                     color="secondary"
                                     variant="contained"
-                                    className={classes.menuButton}
+                                    to="/"
                                 >
-                                    Menu
-                                </Button>
+                                    Home page
+                                </NavLinkButton>
                             </Grid>
                             <Grid
                                 item
@@ -59,13 +60,14 @@ class AppBar extends React.Component<AppBarProps> {
                                 xs
                                 className={classes.loginButtonContainer}
                             >
-                                <Button
+                                <NavLinkButton
+                                    className={classes.loginButton}
                                     color="secondary"
                                     variant="contained"
-                                    className={classes.loginButton}
+                                    to="/test"
                                 >
-                                    Login
-                                </Button>
+                                    Test page
+                                </NavLinkButton>
                             </Grid>
                         </Grid>
                     </Toolbar>

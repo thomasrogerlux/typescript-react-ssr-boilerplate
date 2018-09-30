@@ -1,9 +1,9 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { Typography } from "@material-ui/core";
 
 import { Store } from "common/redux/store";
 import { changeTitle } from "common/redux/action";
-import AppBar from "common/component/AppBar/AppBar.component";
 
 interface HomeProps {
     title: string;
@@ -38,7 +38,9 @@ class Home extends React.Component<HomeProps> {
     public render() {
         return (
             <React.Fragment>
-                <AppBar />
+                <Typography>
+                    Home page
+                </Typography>
             </React.Fragment>
         );
     }

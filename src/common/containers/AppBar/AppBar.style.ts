@@ -3,18 +3,18 @@ import { createStyles } from "@material-ui/core";
 const style = createStyles({
     gridContainer: {},
     menuButtonContainer: {
-		justifyContent: "flex-start"
-	},
+        justifyContent: "flex-start"
+    },
     menuButton: {},
     titleContainer: {
-		justifyContent: "center"
-	},
+        justifyContent: "center"
+    },
     title: {
-		margin: "auto"
-	},
+        margin: "auto"
+    },
     loginButtonContainer: {
-		justifyContent: "flex-end"
-	},
+        justifyContent: "flex-end"
+    },
     loginButton: {}
 });
 
